@@ -61,8 +61,8 @@ Se possível deixe o fork público para facilitar a inspeção do código.
 • Implementação 
 
 - Otimização de recursos
-• Cash de API
-• Cash de Imagens
+• Cache de API
+• Cache de Imagens
 
 - UX
 • Fluidez na utilização do app
