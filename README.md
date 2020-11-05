@@ -47,6 +47,7 @@ A solução precisa ser enviada via pull request para este repositório.
 Se possível deixe o fork público para facilitar a inspeção do código.
 
 
+
 ### **O que será avaliado?**
 
 - Qualidade do código  
@@ -56,16 +57,17 @@ Se possível deixe o fork público para facilitar a inspeção do código.
 • Código idiomático com base na linguagem
 • Descrição dos commits
 
-- Arquitetura
-• Qual a arquitetura escolhida
-• Implementação 
+- Arquitetura  
+• Qual a arquitetura escolhida  
+• Implementação  
 
-- Otimização de recursos
-• Cache de API
-• Cache de Imagens
+- Otimização de recursos  
+• Cache de API  
+• Cache de Imagens  
 
-- UX
-• Fluidez na utilização do app
+- UX  
+• Fluidez na utilização do app  
+
 
 ### **Dica**
 Não existe uma api para trazer mais de um conteúdo por vez, como fazer?
