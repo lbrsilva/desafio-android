@@ -53,9 +53,9 @@ Se possível deixe o fork público para facilitar a inspeção do código.
 - Qualidade do código  
 • Comentários  
 • Organização  
-• Semântica
-• Código idiomático com base na linguagem
-• Descrição dos commits
+• Semântica  
+• Código idiomático com base na linguagem  
+• Descrição dos commits  
 
 - Arquitetura  
 • Qual a arquitetura escolhida  
