@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.com.lbrsilva.nasa.R
 import br.com.lbrsilva.nasa.data.model.Media
-import br.com.lbrsilva.nasa.databinding.ActivityMainBinding
+import br.com.lbrsilva.nasa.databinding.ActivityCarouselBinding
 import br.com.lbrsilva.nasa.databinding.DialogInfoBinding
 import br.com.lbrsilva.nasa.helper.extension.format
 import br.com.lbrsilva.nasa.helper.transformer.DateTransformer
@@ -18,7 +18,7 @@ import java.util.*
 @AndroidEntryPoint
 class CarouselActivity : AppCompatActivity() {
     private val viewModel: CarouselViewModel by viewModels()
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityCarouselBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class CarouselActivity : AppCompatActivity() {
     }
 
     private fun setupUi() {
-        this.binding = ActivityMainBinding.inflate(this.layoutInflater)
+        this.binding = ActivityCarouselBinding.inflate(this.layoutInflater)
 
         this.setContentView(this.binding.root)
 
@@ -56,6 +56,7 @@ class CarouselActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressWarnings("unused")
     fun clickInfo(view: View) {
         val currentPage = this.binding.carousel.currentPage()
 

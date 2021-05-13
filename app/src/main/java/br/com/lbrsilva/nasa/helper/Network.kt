@@ -6,6 +6,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import br.com.lbrsilva.nasa.NasaApplication
 
+@SuppressWarnings("deprecated")
 object Network {
     fun isConnected(): Boolean {
         val context = NasaApplication.context()
