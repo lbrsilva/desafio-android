@@ -1,6 +1,5 @@
-package br.com.lbrsilva.nasa.helper
+package br.com.lbrsilva.nasa.helper.transformer
 
-import br.com.lbrsilva.nasa.helper.transformer.DateTransformer
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
