@@ -31,7 +31,7 @@ class VideoFragment : Fragment() {
         this.arguments?.let {
             val media = it.getSerializable(BundleIdentifier.MEDIA) as Media
 
-            YoutubeTransformer.extractId(media.hdurl)?.let { id ->
+            YoutubeTransformer.extractId(media.url)?.let { id ->
                 this.setupVideo(id)
             }
         }

@@ -72,7 +72,7 @@ class CarouselActivity : AppCompatActivity() {
 
         binding.explanation.text = media.explanation ?: "--"
         binding.author.text = media.copyright ?: "--"
-        
+
         media.date?.let {
             binding.date.text = DateTransformer.parse(it, this.getString(R.string.date_format))
         } ?: run {

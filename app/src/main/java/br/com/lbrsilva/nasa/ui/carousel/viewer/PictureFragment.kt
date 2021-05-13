@@ -30,7 +30,7 @@ class PictureFragment : Fragment() {
         this.arguments?.let {
             val media = it.getSerializable(BundleIdentifier.MEDIA) as Media
 
-            media.hdurl?.let { url ->
+            media.url?.let { url ->
                 Glide.with(view.context).load(url)
                     .listener(ProgressRequestListener(this.binding.load)).into(this.binding.image)
             }

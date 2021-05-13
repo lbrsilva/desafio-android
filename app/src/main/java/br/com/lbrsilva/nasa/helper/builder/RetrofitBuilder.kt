@@ -32,7 +32,7 @@ object RetrofitBuilder {
         httpClient.addInterceptor(provideOfflineCacheInterceptor())
         httpClient.addNetworkInterceptor(provideCacheInterceptor())
         httpClient.cache(provideCache())
-        
+
         builder.client(httpClient.build())
 
         return builder

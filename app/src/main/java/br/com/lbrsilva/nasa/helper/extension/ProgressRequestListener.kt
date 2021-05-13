@@ -7,7 +7,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
-class ProgressRequestListener(val view: View) : RequestListener<Drawable> {
+class ProgressRequestListener(private val view: View) : RequestListener<Drawable> {
     override fun onLoadFailed(
         e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean
     ): Boolean {

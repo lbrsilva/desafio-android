@@ -15,6 +15,6 @@ class DateExtensionTest {
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val date = simpleDateFormat.parse(strDate) ?: Date()
 
-        assertEquals(date.format("yyyy-MM-dd"), strDate)
+        assertEquals("1992-04-06", date.format("yyyy-MM-dd"))
     }
 }
