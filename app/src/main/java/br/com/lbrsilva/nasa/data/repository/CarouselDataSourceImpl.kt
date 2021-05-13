@@ -1,16 +1,16 @@
 package br.com.lbrsilva.nasa.data.repository
 
 import br.com.lbrsilva.nasa.data.api.NasaService
-import br.com.lbrsilva.nasa.data.model.Picture
+import br.com.lbrsilva.nasa.data.model.Media
 import br.com.lbrsilva.nasa.data.model.Resource
 import javax.inject.Inject
 
 class CarouselDataSourceImpl @Inject constructor(
     private val service: NasaService
 ) : CarouselDataSource {
-    override suspend fun pictures(startDate: String, endDate: String): Resource<List<Picture>> {
+    override suspend fun medias(startDate: String, endDate: String): Resource<List<Media>> {
         try {
-            val response = service.pictures(startDate, endDate)
+            val response = service.medias(startDate, endDate)
 
             if (response.isSuccessful) {
                 val body = response.body()

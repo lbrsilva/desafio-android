@@ -3,7 +3,7 @@ package br.com.lbrsilva.nasa.data.model
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class Picture(
+data class Media(
     @SerializedName("copyright")
     val copyright: String?,
     @SerializedName("date")

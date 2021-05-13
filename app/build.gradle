@@ -8,25 +8,23 @@ android {
 
     defaultConfig {
         applicationId "br.com.lbrsilva.nasa"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_KEY", '"DEMO_KEY"'
+        buildConfigField "String", "YOUTUBE_KEY", '"AIzaSyAQsX4YR6g3qpYVW5kZjWpA-oYOBvZq8AY"'
+        buildConfigField "String", "BASE_URL", '"https://api.nasa.gov/"'
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-            buildConfigField "String", 'API_KEY', '"DEMO_KEY"'
-            buildConfigField "String", 'BASE_URL', '"https://api.nasa.gov/"'
-        }
-        debug {
-            buildConfigField "String", 'API_KEY', '"DEMO_KEY"'
-            buildConfigField "String", 'BASE_URL', '"https://api.nasa.gov/"'
         }
     }
     compileOptions {
@@ -82,4 +80,10 @@ dependencies {
 
     // TOUCHIMAGEVIEW
     implementation 'com.github.MikeOrtiz:TouchImageView:3.1.0'
+
+    // YOUTUBE PLAYER VIDEO
+    implementation 'com.github.PierfrancescoSoffritti.android-youtube-player:chromecast-sender:10.0.5'
+
+    // MULTIDEX
+    implementation 'com.android.support:multidex:1.0.3'
 }

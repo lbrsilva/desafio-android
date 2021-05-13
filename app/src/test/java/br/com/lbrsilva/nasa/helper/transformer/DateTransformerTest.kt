@@ -10,7 +10,7 @@ class DateTransformerTest {
     @Test
     fun subtractDaysSuccess() {
         val date = "2021-05-11"
-        val value = DateTransformer.subtractDays(date, 10)
+        val value = DateTransformer.calculateDays(date, -10)
 
         assertEquals(value, "2021-05-01")
     }
@@ -18,7 +18,7 @@ class DateTransformerTest {
     @Test
     fun subtractDaysError() {
         val date = "2021-05-11"
-        val value = DateTransformer.subtractDays(date, 12)
+        val value = DateTransformer.calculateDays(date, -12)
 
         assertEquals(value, "2021-05-01")
     }

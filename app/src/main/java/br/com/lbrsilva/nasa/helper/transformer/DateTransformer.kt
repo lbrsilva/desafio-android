@@ -4,11 +4,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object DateTransformer {
-    fun subtractDays(date: String, subDays: Int = 10): String {
+    fun calculateDays(date: String, days: Int): String {
         val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val calendar = Calendar.getInstance()
         calendar.time = formatter.parse(date) ?: Date()
-        calendar.add(Calendar.DATE, -subDays)
+        calendar.add(Calendar.DATE, days)
 
         return formatter.format(calendar.time)
     }

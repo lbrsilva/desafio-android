@@ -2,10 +2,11 @@ package br.com.lbrsilva.nasa.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import br.com.lbrsilva.nasa.data.model.Picture
+import br.com.lbrsilva.nasa.data.model.Media
 import br.com.lbrsilva.nasa.data.model.Resource
 import br.com.lbrsilva.nasa.data.repository.CarouselRepository
 import br.com.lbrsilva.nasa.rule.MainCoroutineRule
+import br.com.lbrsilva.nasa.ui.carousel.CarouselViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 import org.junit.Test
@@ -24,7 +25,7 @@ class CarouselViewModelTest {
     var mainCoroutineRule = MainCoroutineRule()
 
     @Mock
-    private lateinit var picturesLiveDataObserver: Observer<List<Picture>?>
+    private lateinit var mediasLiveDataObserver: Observer<List<Media>?>
 
     @Mock
     private lateinit var errorLiveDataObserver: Observer<String?>
@@ -32,14 +33,14 @@ class CarouselViewModelTest {
     private lateinit var viewModel: CarouselViewModel
 
     @Test
-    fun `When viewModel get success then set PicturesLiveData (Inverting ASC to DESC by date)`() {
+    fun `When viewModel get success then set MediasLiveData (Inverting ASC to DESC by date)`() {
         this.viewModel = CarouselViewModel(
             MockCarouselRepository(Resource.success(MockCarouselRepository.mockAscList()))
         )
-        this.viewModel.picturesLiveData.observeForever(this.picturesLiveDataObserver)
-        this.viewModel.loadPictures("2021-05-11")
+        this.viewModel.mediasLiveData.observeForever(this.mediasLiveDataObserver)
+        this.viewModel.loadMedias("2021-05-11")
 
-        verify(this.picturesLiveDataObserver).onChanged(MockCarouselRepository.mockDescList())
+        verify(this.mediasLiveDataObserver).onChanged(MockCarouselRepository.mockDescList())
     }
 
     @Test
@@ -50,21 +51,21 @@ class CarouselViewModelTest {
             MockCarouselRepository(Resource.error(500, message))
         )
         this.viewModel.errorLiveData.observeForever(this.errorLiveDataObserver)
-        this.viewModel.loadPictures("2021-05-11")
+        this.viewModel.loadMedias("2021-05-11")
 
         verify(this.errorLiveDataObserver).onChanged(message)
     }
 }
 
-class MockCarouselRepository(private val resource: Resource<List<Picture>>) : CarouselRepository {
-    override suspend fun pictures(startDate: String, endDate: String): Resource<List<Picture>> {
+class MockCarouselRepository(private val resource: Resource<List<Media>>) : CarouselRepository {
+    override suspend fun medias(startDate: String, endDate: String): Resource<List<Media>> {
         return resource
     }
 
     companion object {
-        fun mockAscList(): List<Picture> {
+        fun mockAscList(): List<Media> {
             return listOf(
-                Picture(
+                Media(
                     "Park Liu",
                     "2021-04-01",
                     "Testing 3",
@@ -74,7 +75,7 @@ class MockCarouselRepository(private val resource: Resource<List<Picture>>) : Ca
                     "Rocket Launch as Seen from the Space Station",
                     "https://www.youtube.com/embed/B1R3dTdcpSU?rel=0"
                 ),
-                Picture(
+                Media(
                     "Eric Benson",
                     "2021-04-02",
                     "Testing 2",
@@ -84,7 +85,7 @@ class MockCarouselRepository(private val resource: Resource<List<Picture>>) : Ca
                     "Ingenuity on Sol 39",
                     "https://apod.nasa.gov/apod/image/2104/NGC3521-LRGB-1.jpg"
                 ),
-                Picture(
+                Media(
                     "Park Liu",
                     "2021-05-10",
                     "Testing 3",
@@ -97,9 +98,9 @@ class MockCarouselRepository(private val resource: Resource<List<Picture>>) : Ca
             )
         }
 
-        fun mockDescList(): List<Picture> {
+        fun mockDescList(): List<Media> {
             return listOf(
-                Picture(
+                Media(
                     "Park Liu",
                     "2021-05-10",
                     "Testing 3",
@@ -109,7 +110,7 @@ class MockCarouselRepository(private val resource: Resource<List<Picture>>) : Ca
                     "Ingenuity on Sol 39",
                     "https://apod.nasa.gov/apod/image/2104/PIA24449_1024.jpg"
                 ),
-                Picture(
+                Media(
                     "Eric Benson",
                     "2021-04-02",
                     "Testing 2",
@@ -119,7 +120,7 @@ class MockCarouselRepository(private val resource: Resource<List<Picture>>) : Ca
                     "Ingenuity on Sol 39",
                     "https://apod.nasa.gov/apod/image/2104/NGC3521-LRGB-1.jpg"
                 ),
-                Picture(
+                Media(
                     "Park Liu",
                     "2021-04-01",
                     "Testing 3",

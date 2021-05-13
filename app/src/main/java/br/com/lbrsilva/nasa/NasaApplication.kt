@@ -1,7 +1,7 @@
 package br.com.lbrsilva.nasa
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class NasaApplication : Application()
+class NasaApplication : MultiDexApplication()

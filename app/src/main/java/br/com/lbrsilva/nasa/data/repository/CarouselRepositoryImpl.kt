@@ -5,6 +5,6 @@ import javax.inject.Inject
 open class CarouselRepositoryImpl @Inject constructor(
     private val dataSource: CarouselDataSource
 ) : CarouselRepository {
-    override suspend fun pictures(startDate: String, endDate: String) =
-        this.dataSource.pictures(startDate, endDate)
+    override suspend fun medias(startDate: String, endDate: String) =
+        this.dataSource.medias(startDate, endDate)
 }
