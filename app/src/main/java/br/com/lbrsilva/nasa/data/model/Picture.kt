@@ -1,6 +1,7 @@
 package br.com.lbrsilva.nasa.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Picture(
     @SerializedName("copyright")
@@ -19,4 +20,4 @@ data class Picture(
     val title: String?,
     @SerializedName("url")
     val url: String?
-)
+) : Serializable

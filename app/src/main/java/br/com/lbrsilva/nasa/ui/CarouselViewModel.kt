@@ -15,7 +15,7 @@ import javax.inject.Inject
 class CarouselViewModel @Inject constructor(
     private val repository: CarouselRepository
 ) : ViewModel() {
-    var picturesLiveData = MutableLiveData<List<Picture>?>()
+    var picturesLiveData = MutableLiveData<ArrayList<Picture>?>()
     var errorLiveData = MutableLiveData<String?>()
 
     fun loadPictures(endDate: String) {
@@ -29,7 +29,7 @@ class CarouselViewModel @Inject constructor(
                     it.date ?: ""
                 }
 
-                picturesLiveData.postValue(pictures)
+                picturesLiveData.postValue(ArrayList(pictures))
             } else {
                 errorLiveData.postValue(resource.message)
             }
