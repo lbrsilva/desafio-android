@@ -1,11 +1,15 @@
 package br.com.lbrsilva.nasa.ui.carousel
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import br.com.lbrsilva.nasa.R
 import br.com.lbrsilva.nasa.data.model.Media
-import br.com.lbrsilva.nasa.data.model.Resource
-import br.com.lbrsilva.nasa.data.repository.CarouselRepository
 import br.com.lbrsilva.nasa.databinding.ActivityMainBinding
+import br.com.lbrsilva.nasa.databinding.DialogInfoBinding
 import br.com.lbrsilva.nasa.helper.extension.format
 import br.com.lbrsilva.nasa.helper.transformer.DateTransformer
 import dagger.hilt.android.AndroidEntryPoint
@@ -13,16 +17,13 @@ import java.util.*
 
 @AndroidEntryPoint
 class CarouselActivity : AppCompatActivity() {
-//    private val viewModel: CarouselViewModel by viewModels()
-    private lateinit var  viewModel: CarouselViewModel
+    private val viewModel: CarouselViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         this.setupUi()
-
-        this.viewModel = CarouselViewModel(MockCarouselRepository(Resource.success(MockCarouselRepository.mockAscList())))
 
         this.viewModel.loadMedias(Date().format("yyyy-MM-dd"))
         this.viewModel.mediasLiveData.observe(this) {
@@ -35,6 +36,7 @@ class CarouselActivity : AppCompatActivity() {
                     }
                 } ?: run {
                     this.binding.carousel.adapter = CarouselAdapter(this.supportFragmentManager, it)
+                    this.binding.info.visibility = View.VISIBLE
                 }
             }
         }
@@ -53,47 +55,38 @@ class CarouselActivity : AppCompatActivity() {
             }
         }
     }
-}
 
-class MockCarouselRepository(private val resource: Resource<List<Media>>) : CarouselRepository {
-    override suspend fun medias(startDate: String, endDate: String): Resource<List<Media>> {
-        return resource
+    fun clickInfo(view: View) {
+        val currentPage = this.binding.carousel.currentPage()
+
+        this.binding.carousel.adapter?.let { adapter ->
+            val media = (adapter as CarouselAdapter).list[currentPage]
+
+            this.dialogInfo(media)
+        }
     }
 
-    companion object {
-        fun mockAscList(): List<Media> {
-            return listOf(
-                Media(
-                    "Park Liu",
-                    "2021-04-01",
-                    "Testing 3",
-                    "https://www.youtube.com/embed/B1R3dTdcpSU?rel=0",
-                    "video",
-                    "v1",
-                    "Rocket Launch as Seen from the Space Station",
-                    "https://www.youtube.com/embed/B1R3dTdcpSU?rel=0"
-                ),
-                Media(
-                    "Eric Benson",
-                    "2021-04-02",
-                    "Testing 2",
-                    "https://apod.nasa.gov/apod/image/2104/NGC3521-LRGB-1.jpg",
-                    "image",
-                    "v1",
-                    "Ingenuity on Sol 39",
-                    "https://apod.nasa.gov/apod/image/2104/NGC3521-LRGB-1.jpg"
-                ),
-                Media(
-                    "Park Liu",
-                    "2021-05-10",
-                    "Testing 3",
-                    "https://apod.nasa.gov/apod/image/2104/PIA24449.jpg",
-                    "image",
-                    "v1",
-                    "Ingenuity on Sol 39",
-                    "https://apod.nasa.gov/apod/image/2104/PIA24449_1024.jpg"
-                )
-            )
+    private fun dialogInfo(media: Media) {
+        val builder = AlertDialog.Builder(this)
+        val binding = DialogInfoBinding.inflate(LayoutInflater.from(this))
+
+        binding.explanation.text = media.explanation ?: "--"
+        binding.author.text = media.copyright ?: "--"
+        
+        media.date?.let {
+            binding.date.text = DateTransformer.parse(it, this.getString(R.string.date_format))
+        } ?: run {
+            binding.date.text = "--"
         }
+
+        builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.setView(binding.root)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.white)
     }
 }

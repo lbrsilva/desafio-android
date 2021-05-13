@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">Eai - Nasa</string>
+    <string name="explanation">Explanation</string>
+    <string name="author">Author</string>
+    <string name="date">Date</string>
+    <string name="developed_by">Developed by Lucas Rodrigues</string>
+    <string name="date_format">dd/MM/yyyy</string>
+</resources>

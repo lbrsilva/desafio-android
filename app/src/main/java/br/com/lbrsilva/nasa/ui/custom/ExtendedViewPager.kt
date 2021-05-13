@@ -8,6 +8,8 @@ import com.ortiz.touchview.TouchImageView
 
 class ExtendedViewPager : ViewPager {
     private var loadMore: (() -> (Unit))? = null
+    private var currentPage: Int = 0
+    private var loadMorePositions = arrayListOf<Int>()
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -23,12 +25,15 @@ class ExtendedViewPager : ViewPager {
     override fun onPageScrolled(position: Int, offset: Float, offsetPixels: Int) {
         super.onPageScrolled(position, offset, offsetPixels)
 
+        this.currentPage = position
+
         val count = (this.adapter?.count ?: 0) - 1
 
         if (count > 0) {
             val loadMorePosition = count - 3
 
-            if (position == loadMorePosition) {
+            if (position == loadMorePosition && !this.loadMorePositions.contains(position)) {
+                this.loadMorePositions.add(position)
                 this.loadMore?.let {
                     it()
                 }
@@ -42,5 +47,9 @@ class ExtendedViewPager : ViewPager {
 
     fun removeLoadMore() {
         this.loadMore = null
+    }
+
+    fun currentPage(): Int {
+        return this.currentPage
     }
 }

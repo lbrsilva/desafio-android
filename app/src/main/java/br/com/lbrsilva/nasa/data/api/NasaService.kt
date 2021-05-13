@@ -4,10 +4,12 @@ import br.com.lbrsilva.nasa.BuildConfig
 import br.com.lbrsilva.nasa.data.model.Media
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface NasaService {
     @GET("planetary/apod")
+    @Headers("Cacheable: true")
     suspend fun medias(
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
