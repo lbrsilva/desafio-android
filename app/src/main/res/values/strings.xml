@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Eai - Nasa</string>
+    <string name="app_name">Eai - Nasa</string>
     <string name="explanation">Explicação</string>
     <string name="author">Autor</string>
     <string name="date">Data</string>
     <string name="developed_by">Desenvolvido por Lucas Rodrigues</string>
     <string name="date_format">dd/MM/yyyy</string>
+    <string name="nasa_error">Erro ao carregar mídias</string>
 </resources>

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.lbrsilva.nasa.data.model.Media
 import br.com.lbrsilva.nasa.databinding.FragmentVideoBinding
-import br.com.lbrsilva.nasa.helper.BundleIdentifier
+import br.com.lbrsilva.nasa.helper.identifier.BundleIdentifier
 import br.com.lbrsilva.nasa.helper.transformer.YoutubeTransformer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener

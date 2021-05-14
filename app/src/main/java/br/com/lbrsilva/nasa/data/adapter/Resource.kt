@@ -1,4 +1,4 @@
-package br.com.lbrsilva.nasa.data.model
+package br.com.lbrsilva.nasa.data.adapter
 
 data class Resource<out T>(val code: Int, val status: Status, val data: T?, val message: String?) {
     enum class Status {

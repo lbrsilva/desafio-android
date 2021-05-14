@@ -2,8 +2,8 @@ package br.com.lbrsilva.nasa.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import br.com.lbrsilva.nasa.data.adapter.Resource
 import br.com.lbrsilva.nasa.data.model.Media
-import br.com.lbrsilva.nasa.data.model.Resource
 import br.com.lbrsilva.nasa.data.repository.CarouselRepository
 import br.com.lbrsilva.nasa.rule.MainCoroutineRule
 import br.com.lbrsilva.nasa.ui.carousel.CarouselViewModel

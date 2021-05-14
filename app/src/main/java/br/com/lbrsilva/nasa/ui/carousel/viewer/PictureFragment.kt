@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.lbrsilva.nasa.data.model.Media
 import br.com.lbrsilva.nasa.databinding.FragmentPictureBinding
-import br.com.lbrsilva.nasa.helper.BundleIdentifier
 import br.com.lbrsilva.nasa.helper.extension.ProgressRequestListener
+import br.com.lbrsilva.nasa.helper.identifier.BundleIdentifier
 import com.bumptech.glide.Glide
 
 class PictureFragment : Fragment() {

@@ -17,7 +17,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "API_KEY", '"DEMO_KEY"'
-        buildConfigField "String", "YOUTUBE_KEY", '"AIzaSyAQsX4YR6g3qpYVW5kZjWpA-oYOBvZq8AY"'
         buildConfigField "String", "BASE_URL", '"https://api.nasa.gov/"'
     }
 
@@ -57,10 +56,6 @@ dependencies {
     testImplementation 'org.mockito:mockito-inline:2.28.2'
     testImplementation "org.mockito:mockito-core:3.9.0"
 
-    // COROUTINES TEST
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.1"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.1"
-
     // RETROFIT
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.google.code.gson:gson:2.8.6'
@@ -69,6 +64,10 @@ dependencies {
 
     // COROUTINES
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+    // COROUTINES TEST
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.1"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.1"
 
     // HILT
     implementation 'com.google.dagger:hilt-android:2.31-alpha'
@@ -85,5 +84,5 @@ dependencies {
     implementation 'com.github.PierfrancescoSoffritti.android-youtube-player:chromecast-sender:10.0.5'
 
     // MULTIDEX
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.multidex:multidex:2.0.1'
 }

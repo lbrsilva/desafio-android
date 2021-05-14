@@ -1,8 +1,8 @@
-package br.com.lbrsilva.nasa.data.repository
+package br.com.lbrsilva.nasa.data.datasource
 
+import br.com.lbrsilva.nasa.data.adapter.Resource
 import br.com.lbrsilva.nasa.data.api.NasaService
 import br.com.lbrsilva.nasa.data.model.Media
-import br.com.lbrsilva.nasa.data.model.Resource
 import javax.inject.Inject
 
 class CarouselDataSourceImpl @Inject constructor(

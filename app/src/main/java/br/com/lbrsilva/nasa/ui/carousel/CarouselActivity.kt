@@ -12,6 +12,7 @@ import br.com.lbrsilva.nasa.databinding.ActivityCarouselBinding
 import br.com.lbrsilva.nasa.databinding.DialogInfoBinding
 import br.com.lbrsilva.nasa.helper.extension.format
 import br.com.lbrsilva.nasa.helper.transformer.DateTransformer
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -27,6 +28,8 @@ class CarouselActivity : AppCompatActivity() {
 
         this.viewModel.loadMedias(Date().format("yyyy-MM-dd"))
         this.viewModel.mediasLiveData.observe(this) {
+            this.binding.load.visibility = View.GONE
+
             it?.let { list ->
                 this.binding.carousel.adapter?.let { adapter ->
                     (adapter as CarouselAdapter).add(list)
@@ -39,6 +42,13 @@ class CarouselActivity : AppCompatActivity() {
                     this.binding.info.visibility = View.VISIBLE
                 }
             }
+        }
+        this.viewModel.errorLiveData.observe(this) {
+            Snackbar.make(
+                this.binding.root,
+                it ?: this.getString(R.string.nasa_error),
+                Snackbar.LENGTH_LONG
+            ).show()
         }
     }
 

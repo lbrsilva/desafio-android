@@ -3,7 +3,7 @@ package br.com.lbrsilva.nasa.helper.builder
 import android.util.Log
 import br.com.lbrsilva.nasa.BuildConfig
 import br.com.lbrsilva.nasa.NasaApplication
-import br.com.lbrsilva.nasa.helper.Network
+import br.com.lbrsilva.nasa.helper.util.Network
 import okhttp3.*
 import okhttp3.CacheControl.Builder
 import okhttp3.logging.HttpLoggingInterceptor
@@ -54,11 +54,7 @@ object RetrofitBuilder {
     private fun provideCacheInterceptor(): Interceptor {
         return Interceptor { chain: Interceptor.Chain ->
             val response: Response = chain.proceed(chain.request())
-            val cacheControl: CacheControl = if (Network.isConnected()) {
-                Builder().maxAge(0, TimeUnit.SECONDS).build()
-            } else {
-                Builder().maxStale(7, TimeUnit.DAYS).build()
-            }
+            val cacheControl: CacheControl = Builder().maxAge(1, TimeUnit.DAYS).build()
 
             response.newBuilder()
                 .removeHeader(HEADER_PRAGMA)
@@ -72,7 +68,7 @@ object RetrofitBuilder {
         return Interceptor { chain: Interceptor.Chain ->
             var request: Request = chain.request()
             if (!Network.isConnected()) {
-                val cacheControl: CacheControl = Builder().maxStale(7, TimeUnit.DAYS).build()
+                val cacheControl: CacheControl = Builder().maxStale(1, TimeUnit.DAYS).build()
 
                 request = request.newBuilder()
                     .removeHeader(HEADER_PRAGMA)

@@ -1,5 +1,6 @@
 package br.com.lbrsilva.nasa.data.repository
 
+import br.com.lbrsilva.nasa.data.datasource.CarouselDataSource
 import javax.inject.Inject
 
 open class CarouselRepositoryImpl @Inject constructor(

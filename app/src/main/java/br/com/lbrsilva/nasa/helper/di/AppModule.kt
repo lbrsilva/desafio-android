@@ -1,7 +1,7 @@
 package br.com.lbrsilva.nasa.helper.di
 
-import br.com.lbrsilva.nasa.data.repository.CarouselDataSource
-import br.com.lbrsilva.nasa.data.repository.CarouselDataSourceImpl
+import br.com.lbrsilva.nasa.data.datasource.CarouselDataSource
+import br.com.lbrsilva.nasa.data.datasource.CarouselDataSourceImpl
 import br.com.lbrsilva.nasa.data.repository.CarouselRepository
 import br.com.lbrsilva.nasa.data.repository.CarouselRepositoryImpl
 import dagger.Module

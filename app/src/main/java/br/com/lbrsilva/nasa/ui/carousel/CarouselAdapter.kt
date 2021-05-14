@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import br.com.lbrsilva.nasa.data.model.Media
-import br.com.lbrsilva.nasa.helper.BundleIdentifier
+import br.com.lbrsilva.nasa.helper.identifier.BundleIdentifier
 import br.com.lbrsilva.nasa.ui.carousel.viewer.PictureFragment
 import br.com.lbrsilva.nasa.ui.carousel.viewer.VideoFragment
 
