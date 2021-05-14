@@ -30,8 +30,8 @@ No botão de info (*i* no canto inferior esquerdo), é possível verificar a dat
 - [YoutubePlayerVideo]
 - [Coroutines]
 
-O aplicativo muda o idioma das identificadores da dialog de informações de acordo com o idioma do celular.
-Alguns testes unitários foram criados para validar algumas funcionalidades.
+O aplicativo muda o idioma dos identificadores da dialog de informações de acordo com o idioma do celular.
+Alguns testes unitários foram criados para validar funcionalidades.
 
 [Retrofit]: <https://square.github.io/retrofit>
 [Hilt]: <https://developer.android.com/training/dependency-injection/hilt-android?hl=pt-br>
