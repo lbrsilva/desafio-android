@@ -1,4 +1,4 @@
-package br.com.lbrsilva.nasa.ui.carousel
+package br.com.lbrsilva.nasa.ui.gallery
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import br.com.lbrsilva.nasa.data.model.Media
 import br.com.lbrsilva.nasa.helper.identifier.BundleIdentifier
-import br.com.lbrsilva.nasa.ui.carousel.viewer.PictureFragment
-import br.com.lbrsilva.nasa.ui.carousel.viewer.VideoFragment
+import br.com.lbrsilva.nasa.ui.gallery.viewer.PictureFragment
+import br.com.lbrsilva.nasa.ui.gallery.viewer.VideoFragment
 
-class CarouselAdapter(
+class GalleryAdapter(
     fragmentManager: FragmentManager,
     var list: ArrayList<Media>
 ) : FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

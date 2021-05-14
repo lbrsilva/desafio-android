@@ -1,9 +1,9 @@
 package br.com.lbrsilva.nasa.helper.di
 
-import br.com.lbrsilva.nasa.data.datasource.CarouselDataSource
-import br.com.lbrsilva.nasa.data.datasource.CarouselDataSourceImpl
-import br.com.lbrsilva.nasa.data.repository.CarouselRepository
-import br.com.lbrsilva.nasa.data.repository.CarouselRepositoryImpl
+import br.com.lbrsilva.nasa.data.datasource.GalleryDataSource
+import br.com.lbrsilva.nasa.data.datasource.GalleryDataSourceImpl
+import br.com.lbrsilva.nasa.data.repository.GalleryRepository
+import br.com.lbrsilva.nasa.data.repository.GalleryRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +15,9 @@ import javax.inject.Singleton
 class AppModule {
     @Provides
     @Singleton
-    fun provideCarouselRepository(repository: CarouselRepositoryImpl): CarouselRepository =
-        repository
+    fun provideGalleryRepository(repository: GalleryRepositoryImpl): GalleryRepository = repository
 
     @Provides
     @Singleton
-    fun provideCarouselDataSource(dataSource: CarouselDataSourceImpl): CarouselDataSource =
-        dataSource
+    fun provideGalleryDataSource(dataSource: GalleryDataSourceImpl): GalleryDataSource = dataSource
 }

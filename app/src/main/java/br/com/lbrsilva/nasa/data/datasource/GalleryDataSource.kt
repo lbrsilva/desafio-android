@@ -1,8 +1,8 @@
-package br.com.lbrsilva.nasa.data.repository
+package br.com.lbrsilva.nasa.data.datasource
 
 import br.com.lbrsilva.nasa.data.adapter.Resource
 import br.com.lbrsilva.nasa.data.model.Media
 
-interface CarouselRepository {
+interface GalleryDataSource {
     suspend fun medias(startDate: String, endDate: String): Resource<List<Media>>
 }

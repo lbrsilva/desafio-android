@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import br.com.lbrsilva.nasa.data.adapter.Resource
 import br.com.lbrsilva.nasa.data.model.Media
-import br.com.lbrsilva.nasa.data.repository.CarouselRepository
+import br.com.lbrsilva.nasa.data.repository.GalleryRepository
 import br.com.lbrsilva.nasa.rule.MainCoroutineRule
-import br.com.lbrsilva.nasa.ui.carousel.CarouselViewModel
+import br.com.lbrsilva.nasa.ui.gallery.GalleryViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 import org.junit.Test
@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 @ExperimentalCoroutinesApi
-class CarouselViewModelTest {
+class GalleryViewModelTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -30,25 +30,25 @@ class CarouselViewModelTest {
     @Mock
     private lateinit var errorLiveDataObserver: Observer<String?>
 
-    private lateinit var viewModel: CarouselViewModel
+    private lateinit var viewModel: GalleryViewModel
 
     @Test
     fun `When viewModel get success then set MediasLiveData (Inverting ASC to DESC by date)`() {
-        this.viewModel = CarouselViewModel(
-            MockCarouselRepository(Resource.success(MockCarouselRepository.mockAscList()))
+        this.viewModel = GalleryViewModel(
+            MockGalleryRepository(Resource.success(MockGalleryRepository.mockAscList()))
         )
         this.viewModel.mediasLiveData.observeForever(this.mediasLiveDataObserver)
         this.viewModel.loadMedias("2021-05-11")
 
-        verify(this.mediasLiveDataObserver).onChanged(MockCarouselRepository.mockDescList())
+        verify(this.mediasLiveDataObserver).onChanged(MockGalleryRepository.mockDescList())
     }
 
     @Test
     fun `When viewModel get error then set ErrorLiveData`() {
         val message = "Unknown Error"
 
-        this.viewModel = CarouselViewModel(
-            MockCarouselRepository(Resource.error(500, message))
+        this.viewModel = GalleryViewModel(
+            MockGalleryRepository(Resource.error(500, message))
         )
         this.viewModel.errorLiveData.observeForever(this.errorLiveDataObserver)
         this.viewModel.loadMedias("2021-05-11")
@@ -57,7 +57,7 @@ class CarouselViewModelTest {
     }
 }
 
-class MockCarouselRepository(private val resource: Resource<List<Media>>) : CarouselRepository {
+class MockGalleryRepository(private val resource: Resource<List<Media>>) : GalleryRepository {
     override suspend fun medias(startDate: String, endDate: String): Resource<List<Media>> {
         return resource
     }

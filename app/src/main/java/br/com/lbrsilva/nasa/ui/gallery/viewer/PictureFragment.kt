@@ -1,4 +1,4 @@
-package br.com.lbrsilva.nasa.ui.carousel.viewer
+package br.com.lbrsilva.nasa.ui.gallery.viewer
 
 import android.os.Bundle
 import android.view.LayoutInflater

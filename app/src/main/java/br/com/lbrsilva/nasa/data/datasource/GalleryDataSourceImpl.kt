@@ -5,9 +5,9 @@ import br.com.lbrsilva.nasa.data.api.NasaService
 import br.com.lbrsilva.nasa.data.model.Media
 import javax.inject.Inject
 
-class CarouselDataSourceImpl @Inject constructor(
+class GalleryDataSourceImpl @Inject constructor(
     private val service: NasaService
-) : CarouselDataSource {
+) : GalleryDataSource {
     override suspend fun medias(startDate: String, endDate: String): Resource<List<Media>> {
         try {
             val response = service.medias(startDate, endDate)
